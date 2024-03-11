@@ -1,0 +1,5 @@
+stateDiagram
+    [*] --> SinMedicamento
+    SinMedicamento --> ConMedicamento: CrearMedicamento
+    ConMedicamento --> ConMedicamento: ActualizarMedicamento
+    ConMedicamento --> SinMedicamento: BorrarMedicamento

@@ -1,0 +1,5 @@
+stateDiagram
+    [*] --> SinHistoria
+    SinHistoria --> ConHistoria: CrearHistoriaClinica
+    ConHistoria --> ConHistoria: ActualizarHistoriaClinica
+    ConHistoria --> SinHistoria: BorrarHistoriaClinica

@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant Secretaria
+    participant Sistema
+    participant Email
+
+    Secretaria->>Sistema: ProgramarCita(paciente, fecha, hora, especialista)
+    Sistema->>Sistema: ValidarCita(fecha, hora, especialista)
+    Sistema-->>Secretaria: CitaProgramada()
+    Sistema->>Email: EnviarEmail(paciente, "Cita Programada", "Fecha: fecha, Hora: hora, Especialista: especialista")
+    Email-->>Secretaria: ConfirmaciónEnviada()

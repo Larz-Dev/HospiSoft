@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant EncargadoDispensario
+    participant Sistema
+
+    EncargadoDispensario->>Sistema: CrearMedicamento(nombre, cantidad, precio)
+    Sistema-->>EncargadoDispensario: MedicamentoCreado()
+    EncargadoDispensario->>Sistema: ActualizarMedicamento(id, cantidad, precio)
+    Sistema-->>EncargadoDispensario: MedicamentoActualizado()
+    EncargadoDispensario->>Sistema: BorrarMedicamento(id)
+    Sistema-->>EncargadoDispensario: MedicamentoBorrado()

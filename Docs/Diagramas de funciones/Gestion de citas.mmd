@@ -1,0 +1,6 @@
+stateDiagram
+    [*] --> SinCita
+    SinCita --> CitaProgramada: ProgramarCita
+    CitaProgramada --> SinCita: CancelarCita
+    CitaProgramada --> CitaAtendida: AtenderCita
+    CitaAtendida --> SinCita: CerrarCita

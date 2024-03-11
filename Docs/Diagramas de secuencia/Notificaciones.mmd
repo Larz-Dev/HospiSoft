@@ -1,0 +1,7 @@
+sequenceDiagram
+    participant Sistema
+    participant Email
+    participant SMS
+
+    Sistema->>Email: EnviarEmail(destinatario, asunto, mensaje)
+    Sistema->>SMS: EnviarSMS(numero, mensaje)
