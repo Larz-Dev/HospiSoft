@@ -20,8 +20,58 @@ document.getElementById("loginForm")?.addEventListener("submit", (event) => {
      method: "POST",
         mode: "cors",
         body: json,
-      }).then((response) => console.log(response));
-    // Log the values
-    console.log(`Name: ${name}`);
-    console.log(`Email: ${email}`);
+      }).then(function(response) {
+
+        return response.json();
+      }).then(function(data) {
+        console.log(data)
+
+
+        if(data.status == "ok"){
+
+
+            Swal.fire({
+                icon: "success",
+                title: "Correcto",
+                text: data.mensaje,
+            
+              });
+
+              localStorage.setItem('EMAIL',data.email);
+              localStorage.setItem('ID',data.id);
+              localStorage.setItem('USER',data.user);
+              setTimeout(() => {
+            
+
+
+                console.log(localStorage.getItem('EMAIL'));
+                console.log(localStorage.getItem('ID'));
+                console.log(localStorage.getItem('USER'));
+                window.location.replace("index.html")
+            }, "1500");
+        }
+
+if(data.status == "error"){
+
+    Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: data.mensaje,
+    
+      });
+}
+
+
+      });
+
   });
+
+
+
+  function CerrarSesion() {
+
+    localStorage.setItem('EMAIL',"");
+    localStorage.setItem('ID',"");
+    localStorage.setItem('USER',"");
+    
+  }

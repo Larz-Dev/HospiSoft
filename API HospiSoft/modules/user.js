@@ -15,27 +15,55 @@ user.post("/user/create", (req, res) => {
     fechaNacimiento: req.body.date,
     usuarioPaciente: req.body.user,
     passwordPaciente: bcrypt.hashSync(req.body.password + "", salt),
-
   };
-  console.log(frmdata);
-  conexion.query(
-    "INSERT INTO hospisoft_paciente SET ?",
-    frmdata,
-    (error, data) => {
-      try {
-        res.status(200).send({
-          status: "ok",
-          mensaje: "Operación exitosa",
-        });
-      } catch (error) {
-        console.log(error);
 
-        res.status(404).send({
-          status: "error",
-          mensaje: "Error en la insercion",
-          error: error.message,
-        });
+  conexion.query(
+    "SELECT * FROM hospisoft_paciente",
+
+    (error, consulta) => {
+      let email;
+
+      let user;
+      let insertar = true;
+      consulta.forEach((value, key) => {
+        email = value.emailPaciente;
+        user = value.usuarioPaciente;
+
+        if (email == req.body.email || user == req.body.user) {
+          insertar = false;
+        }
+      });
+
+      if(insertar == true){
+        conexion.query(
+          "INSERT INTO hospisoft_paciente SET ?",
+          frmdata,
+          (error, data) => {
+            try {
+              res.status(200).send({
+                status: "ok",
+                mensaje: "Operación exitosa",
+              });
+            } catch (error) {
+              console.log(error);
+      
+              res.status(404).send({
+                status: "error",
+                mensaje: "Error en la insercion",
+           
+              });
+            }
+          }
+        );
+      
       }
+      else{    res.status(404).send({
+        status: "error",
+        mensaje: "El correo o el nombre de usuario ya está en uso",
+
+      });
+      }
+      
     }
   );
 });
@@ -50,7 +78,7 @@ user.post("/user/login", (req, res) => {
   if (!userl || !passwordl) {
     res.status(400).send({
       consulta: "error",
-      mensaje: "faltan datos por enviar del formulario ! ",
+      mensaje: "Faltan datos por enviar del formulario",
     });
   } else {
     conexion.query(
@@ -70,13 +98,14 @@ user.post("/user/login", (req, res) => {
           name = value.nombrePaciente;
           lastname = value.apellidosPaciente;
           user = value.usuarioPaciente;
+          id = value.idPaciente;
         });
 
         if (email == null) {
-          console.log("No se ha encontrado el usuario")
+          console.log("No se ha encontrado el usuario");
           res.status(400).send({
             status: "error",
-            mensaje: "Usuario no existe en la BD",
+            mensaje: "El usuario no existe en la base de datos",
           });
         } else {
           let pwd = bcrypt.compareSync(req.body.password, password);
@@ -84,14 +113,15 @@ user.post("/user/login", (req, res) => {
           if (!pwd) {
             res.status(400).send({
               status: "error",
-              mensaje: "Pwd Incorrecto !",
+              mensaje: "Contraseña incorrecta",
             });
           } else {
             res.status(200).send({
-              consulta: "ok",
-              mensaje: "Ingreso exitoso al sistema!",
+              status: "ok",
+              mensaje: "Ingreso exitoso",
               user: name + " " + lastname,
               email: email,
+              id:id
             });
           }
         }
@@ -99,9 +129,5 @@ user.post("/user/login", (req, res) => {
     );
   }
 });
-
-
-  
-
 
 module.exports = user;

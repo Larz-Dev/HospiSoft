@@ -20,8 +20,33 @@ document.getElementById("registerForm")?.addEventListener("submit", (event) => {
      method: "POST",
         mode: "cors",
         body: json,
-      }).then((response) => console.log(response));
+      }
+      ).then(function(response) {
+
+        return response.json();
+      }).then(function(data) {
+ 
+if(data.status == "error"){
+
+    Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: data.mensaje,
     
-    console.log(`date: ${date}`);
+      });
+}
+
+if(data.status == "ok"){
+
+    Swal.fire({
+        icon: "success",
+        title: "Correcto",
+        text: data.mensaje,
+    
+      });
+}
+
+      });
+    
 
   });
