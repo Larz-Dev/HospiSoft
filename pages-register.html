@@ -51,7 +51,7 @@
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">NiceAdmin</span>
+                  <span class="d-none d-lg-block">HospiSoft</span>
                 </a>
               </div><!-- End Logo -->
 
@@ -60,50 +60,84 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                    <p class="text-center small">Enter your personal details to create account</p>
+                    <h5 class="card-title text-center pb-0 fs-4">Crear una cuenta</h5>
+                    <p class="text-center small">Ingrese su información personal para completar el registro.</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form id="registerForm" class="row g-3 needs-validation">
                     <div class="col-12">
-                      <label for="yourName" class="form-label">Your Name</label>
+                      <label for="yourName" class="form-label">Nombre *</label>
                       <input type="text" name="name" class="form-control" id="yourName" required>
-                      <div class="invalid-feedback">Please, enter your name!</div>
+                      <div class="invalid-feedback">Porfavor, ingrese su nombre!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Your Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                      <label for="yourName" class="form-label">Apellido *</label>
+                      <input type="text" name="lastname" class="form-control" id="yourName" required>
+                      <div class="invalid-feedback">Porfavor, ingrese su apellido!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
+                      <label for="yourName" class="form-label">Fecha de nacimiento *</label>
+                      <input type="date" name="date" class="form-control" id="yourName" required>
+                      <div class="invalid-feedback">Porfavor, ingrese su fecha de nacimiento!</div>
+                    </div>
+
+                        <div class="col-12">
+                      <label for="yourName" class="form-label">EPS *</label>
+                      <input type="text" name="eps" class="form-control" id="yourName" required>
+                      <div class="invalid-feedback">Porfavor, ingrese su EPS</div>
+                    </div>
+
+
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">Usuario *</label>
+                      <input type="text" name="user" class="form-control" id="yourEmail" required>
+                      <div class="invalid-feedback">Porfavor, elija un nombre de usuario.</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourName" class="form-label">Movil *</label>
+                      <input type="number" name="movil" class="form-control" id="yourName" required>
+                      <div class="invalid-feedback">Porfavor, ingrese su teléfono movil!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourName" class="form-label">Fijo</label>
+                      <input type="number" name="fijo" class="form-control" id="yourName" >
+               
+                    </div>
+                    
+
+
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">Correo *</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please choose a username.</div>
+                        <input type="email" name="email" class="form-control" id="yourUsername" required>
+                        <div class="invalid-feedback">Porfavor, ingrese su correo!</div>
                       </div>
                     </div>
+                
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
+                      <label for="yourPassword" class="form-label">Password *</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
+                      <div class="invalid-feedback">Porfavor, ingrese su contraseña!</div>
                     </div>
 
                     <div class="col-12">
                       <div class="form-check">
                         <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                        <div class="invalid-feedback">You must agree before submitting.</div>
+                        <label class="form-check-label" for="acceptTerms">Acepto los <a href="#">terminos y condiciones</a></label>
+                        <div class="invalid-feedback">debes aceptar los téminos antes de completar el registro.</div>
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                      <button class="btn btn-primary w-100" type="submit">Crear cuenta</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>
+                      <p class="small mb-0">Ya tienes una cuenta? <a href="pages-login.html">Ingresa</a></p>
                     </div>
                   </form>
 
@@ -140,7 +174,7 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="/js/register.js"></script>
 
 </body>
 

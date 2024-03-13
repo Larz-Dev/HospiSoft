@@ -33,7 +33,8 @@ var corsOptions = {
 //Rutas de la app
 
 //Microservicio
-app.use("/", CORS(corsOptions),require("./modules/medicine"))
+app.use("/",require("./modules/medicine"))
+app.use("/",require("./modules/user"))
 
 
 

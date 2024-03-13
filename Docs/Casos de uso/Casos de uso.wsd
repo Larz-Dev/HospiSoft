@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+
+actor Medico as "Médico"
+actor Secretaria as "Secretaria"
+actor Encargado as "Encargado del Dispensario"
+actor Dueño as "Dueño del Centro Médico"
+
+rectangle "Sistema de Gestión Médica" {
+  usecase "Gestión de Citas" as UC1
+  usecase "Historias Clínicas" as UC2
+  usecase "Medicamentos" as UC3
+  usecase "Consultas Médicas" as UC4
+  usecase "Reportes Estadísticos" as UC5
+  usecase "Notificaciones" as UC6
+
+  Medico -- UC1
+  Secretaria -- UC1
+  Secretaria -- UC2
+  Encargado -- UC3
+  Medico -- UC4
+  Dueño -- UC5
+  Dueño -- UC6
+}
+
+@enduml
