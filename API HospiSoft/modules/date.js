@@ -1,15 +1,24 @@
 
 const conexion = require("./bdata");
 const EXPRESSJS = require("express");
-const medicine = EXPRESSJS.Router();
+const date = EXPRESSJS.Router();
 
 //Desarrollo del CRUD
 
 
 //Consultar todos
 
-medicine.get("/medicine/listing", (req, res) => {
-    conexion.query("SELECT * FROM hospisoft_item order by existencia DESC", (error, datos) => {
+date.get("/date/listing", (req, res) => {
+    conexion.query(`SELECT hospisoft_paciente.nombrePaciente as Paciente ,hospisoft_paciente.apellidosPaciente as Apellido, posologia as Posologia , hospisoft_medico.nombreMedico as Medico, hospisoft_medico.especialidadMedico as Especialidad ,hospisoft_formula.fecha as Fecha ,  hospisoft_item.descripcion, cantidad
+    FROM hospisoft_detalleformula
+    INNER JOIN hospisoft_formula 
+    ON hospisoft_detalleformula.consecutivoformula = hospisoft_formula.consecutivoformula
+    INNER JOIN hospisoft_medico
+    ON hospisoft_medico.IdMedico = hospisoft_formula.idMedico
+    INNER JOIN hospisoft_paciente
+    ON hospisoft_paciente.idPaciente = hospisoft_formula.idPaciente
+    INNER JOIN hospisoft_item
+    ON hospisoft_item.Iditem = hospisoft_detalleformula.iditem;`, (error, datos) => {
      
       try {
         res.status(200).send(datos);
@@ -29,7 +38,7 @@ medicine.get("/medicine/listing", (req, res) => {
   });
   
 
-  medicine.post("/medicine/create", (req, res) => {
+  date.post("/date/create", (req, res) => {
 
     let frmdata = {
       descripcion: req.body.descripcion,
@@ -60,7 +69,7 @@ medicine.get("/medicine/listing", (req, res) => {
 
   });
 
-  medicine.post("/medicine/edit", (req, res) => {
+  date.post("/date/edit", (req, res) => {
 
     let frmdata = {
       descripcion: req.body.descripcion,
@@ -92,4 +101,4 @@ medicine.get("/medicine/listing", (req, res) => {
 
   });
   
-  module.exports = medicine;
+  module.exports = date;

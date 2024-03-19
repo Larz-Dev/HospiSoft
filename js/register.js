@@ -44,6 +44,7 @@ if(data.status == "ok"){
         text: data.mensaje,
     
       });
+      window.location.replace("pages-login.html")
 }
 
       });

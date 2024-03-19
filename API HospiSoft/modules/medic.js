@@ -1,24 +1,21 @@
 const conexion = require("./bdata");
 const EXPRESSJS = require("express");
 const bcrypt = require("bcrypt");
-const user = EXPRESSJS.Router();
+const medic = EXPRESSJS.Router();
 
-user.post("/user/create", (req, res) => {
+medic.post("/medic/create", (req, res) => {
   const salt = 10;
   let frmdata = {
-    nombrePaciente: req.body.name,
-    apellidosPaciente: req.body.lastname,
-    emailPaciente: req.body.email,
-    telefonoPaciente: req.body.fijo,
-    movilPaciente: req.body.movil,
-    epsPaciente: req.body.eps,
-    fechaNacimiento: req.body.date,
-    usuarioPaciente: req.body.user,
-    passwordPaciente: bcrypt.hashSync(req.body.password + "", salt),
+    nombreMedico: req.body.name,
+    apellidosMedico: req.body.lastname,
+    emailMedico: req.body.email,
+    especialidadMedico: req.body.especialidad,
+    rolMedico:req.body.rol,
+    passwordMedico: bcrypt.hashSync(req.body.password + "", salt),
   };
 
   conexion.query(
-    "SELECT * FROM hospisoft_paciente",
+    "SELECT * FROM hospisoft_medico",
 
     (error, consulta) => {
       let email;
@@ -26,17 +23,16 @@ user.post("/user/create", (req, res) => {
       let user;
       let insertar = true;
       consulta.forEach((value, key) => {
-        email = value.emailPaciente;
-        user = value.usuarioPaciente;
-
-        if (email == req.body.email || user == req.body.user) {
+        email = value.emailMedico;
+ 
+        if (email == req.body.email) {
           insertar = false;
         }
       });
 
       if(insertar == true){
         conexion.query(
-          "INSERT INTO hospisoft_paciente SET ?",
+          "INSERT INTO hospisoft_medico SET ?",
           frmdata,
           (error, data) => {
             try {
@@ -69,22 +65,20 @@ user.post("/user/create", (req, res) => {
 });
 
 
-user.post("/user/edit", (req, res) => {
+medic.post("/medic/edit", (req, res) => {
   const salt = 10;
   let frmdata = {
-    nombrePaciente: req.body.name,
-    apellidosPaciente: req.body.lastname,
-    emailPaciente: req.body.email,
-    telefonoPaciente: req.body.fijo,
-    movilPaciente: req.body.movil,
-    epsPaciente: req.body.eps,
-    fechaNacimiento: req.body.date,
-    usuarioPaciente: req.body.user,
-    passwordPaciente: bcrypt.hashSync(req.body.password + "", salt),
+    
+    nombreMedico: req.body.name,
+    apellidosMedico: req.body.lastname,
+    emailMedico: req.body.email,
+    especialidadMedico: req.body.especialidad,
+    rolMedico:req.body.rol,
+    passwordMedico: bcrypt.hashSync(req.body.password + "", salt),
   };
 
   conexion.query(
-    "SELECT * FROM hospisoft_paciente",
+    "SELECT * FROM hospisoft_medico",
 
     (error, consulta) => {
       let email;
@@ -102,7 +96,7 @@ user.post("/user/edit", (req, res) => {
 
       if(insertar == false){
         conexion.query(
-         `Update hospisoft_paciente SET nombrePaciente =  '${frmdata.nombrePaciente}' , apellidosPaciente = '${frmdata.apellidosPaciente }' , emailPaciente =  '${frmdata.emailPaciente}', telefonoPaciente = '${frmdata.telefonoPaciente}', movilPaciente =  '${frmdata.movilPaciente}' , epsPaciente =  '${frmdata.epsPaciente}' , fechaNacimiento =  '${frmdata.fechaNacimiento}' ,usuarioPaciente  =  '${frmdata.usuarioPaciente}', passwordPaciente =  '${frmdata.passwordPaciente}' where idPaciente =` + req.body.id,
+         `Update hospisoft_medico SET nombreMedico =  '${frmdata.nombreMedico}' , apellidosMedico = '${frmdata.apellidosMedico }' , emailMedico =  '${frmdata.emailMedico}', especialidadMedico = '${frmdata.especialidadMedico}', passwordMedico =  '${frmdata.passwordMedico}',rolMedico =  '${frmdata.rolMedico}'  where IdMedico =` + req.body.id,
        
           (error, data) => {
             try {
@@ -134,12 +128,12 @@ user.post("/user/edit", (req, res) => {
   );
 });
 
-user.post("/user/login", (req, res) => {
+medic.post("/medic/login", (req, res) => {
   const salt = 10;
   //datos de la peticion (body)
   let emaill = req.body.email;
   let passwordl = bcrypt.hashSync(req.body.password + "", salt);
-console.log(emaill);
+
   //validamos que la data esté completa
   if (!emaill || !passwordl) {
     res.status(400).send({
@@ -148,7 +142,7 @@ console.log(emaill);
     });
   } else {
     conexion.query(
-      "SELECT * FROM hospisoft_paciente WHERE emailPaciente like '" +
+      "SELECT * FROM hospisoft_medico WHERE emailMedico like '" +
       emaill +
         "'",
 
@@ -157,15 +151,14 @@ console.log(emaill);
         let email;
         let name;
         let lastname;
-        let user;
         let id;
         consulta.forEach((value, key) => {
-          password = value.passwordPaciente;
-          email = value.emailPaciente;
-          name = value.nombrePaciente;
-          lastname = value.apellidosPaciente;
-          user = value.usuarioPaciente;
-          id = value.idPaciente;
+          password = value.passwordMedico;
+          email = value.emailMedico;
+          name = value.nombreMedico;
+          lastname = value.apellidosMedico;
+      role = value.rolMedico;
+          id = value.idMedico;
         });
 
         if (email == null) {
@@ -173,7 +166,7 @@ console.log(emaill);
           res.status(400).send({
             status: "error",
             mensaje: "El usuario no existe en la base de datos",
-            codigo: "2"
+         codigo: "2"
           });
         } else {
           let pwd = bcrypt.compareSync(req.body.password, password);
@@ -182,7 +175,7 @@ console.log(emaill);
             res.status(400).send({
               status: "error",
               mensaje: "Contraseña incorrecta",
-              codigo: "1"
+              codigo:"1",
             });
           } else {
             res.status(200).send({
@@ -190,7 +183,9 @@ console.log(emaill);
               mensaje: "Ingreso exitoso",
               user: name + " " + lastname,
               email: email,
-              id:id
+              id:id,
+              role: role
+           
             });
           }
         }
@@ -200,8 +195,8 @@ console.log(emaill);
 });
 
 
-user.get("/user/listing", (req, res) => {
-  conexion.query("SELECT * FROM hospisoft_paciente", (error, datos) => {
+medic.get("/medic/listing", (req, res) => {
+  conexion.query("SELECT * FROM hospisoft_medico", (error, datos) => {
    
     try {
       res.status(200).send(datos);
@@ -220,5 +215,4 @@ user.get("/user/listing", (req, res) => {
   });
 });
 
-
-module.exports = user;
+module.exports = medic;

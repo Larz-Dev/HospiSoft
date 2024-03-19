@@ -14,7 +14,7 @@ document.getElementById("loginForm")?.addEventListener("submit", (event) => {
     });
     var json = JSON.stringify(datos);
 
-    fetch("http://localhost:2000/user/login", {
+    fetch("http://localhost:2000/medic/login", {
        
     headers: {"Content-Type": "application/json"},
      method: "POST",
@@ -24,31 +24,35 @@ document.getElementById("loginForm")?.addEventListener("submit", (event) => {
 
         return response.json();
       }).then(function(data) {
-        console.log(data)
+
+
+      
 
 
         if(data.status == "ok"){
 
 
-            Swal.fire({
-                icon: "success",
-                title: "Correcto",
-                text: data.mensaje,
-            
-              });
+          Swal.fire({
+              icon: "success",
+              title: "Correcto",
+              text: data.mensaje,
+          
+            });
 
-              localStorage.setItem('EMAIL',data.email);
-              localStorage.setItem('ID',data.id);
-              localStorage.setItem('USER',data.user);
-              setTimeout(() => {
-            
+            localStorage.setItem('EMAIL',data.email);
+            localStorage.setItem('ID',data.id);
+            localStorage.setItem('USER',data.user);
+            localStorage.setItem('ROLE',data.role);
+            setTimeout(() => {
+          
 
 
-                console.log(localStorage.getItem('EMAIL'));
-                console.log(localStorage.getItem('ID'));
-                console.log(localStorage.getItem('USER'));
-                window.location.replace("index.html")
-            }, "1500");
+           
+            if(localStorage.getItem('ROLE')=="ROOT"){
+              window.location.replace("index-root.html")
+
+            }
+          }, "1500");
         }
 
 if(data.status == "error"){
