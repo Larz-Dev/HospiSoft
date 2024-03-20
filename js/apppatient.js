@@ -118,7 +118,7 @@ document.getElementById("ecorreo").value = correo;
 document.getElementById("emovil").value = movil;
 document.getElementById("efijo").value = fijo;
 const date = new Date(nacimiento).toISOString().slice(0, 10);
-console.log(date)
+
 document.getElementById("edate").value = date;
 document.getElementById("eeps").value = eps;
 document.getElementById("euser").value = usuario;

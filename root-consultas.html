@@ -340,7 +340,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Medicamentos</h1>
+      <h1>Formulas</h1>
     
     </div><!-- End Page Title -->
 
@@ -349,7 +349,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar medicamento</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar consulta</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -360,7 +360,7 @@
                   <label for="validationDefault02" class="form-label">Medicamento</label>
                  
               
-                    <select class="form-select" name="idItem" id="emedicamentos" aria-label="Floating label select example">
+                    <select class="form-select" name="item" id="emedicamentos" aria-label="Floating label select example">
                       
                     </select>
               
@@ -369,7 +369,7 @@
 
                 <div class="col-md-12">
                   <label for="validationDefault02" class="form-label">Cantidad</label>
-                  <input id="eexistencia"  name="existencia" type="number" class="form-control" id="validationDefault02" value="" required>
+                  <input id="eexistencia"  name="cantidad" type="number" class="form-control" id="validationDefault02" value="" required>
                 </div>
 
 
@@ -378,8 +378,8 @@
                     
                 <div class="form-floating mb-12">
                
-                  <textarea class="form-control" placeholder="Leave a comment here" id="validationDefault02" style="height: 100px;"></textarea>
-       
+                  <textarea class="form-control" name="posologia" id="eposologia" placeholder="" id="validationDefault02" style="height: 100px;"></textarea>
+            
                 </div>
 
                 <div class="col-md-12">
@@ -389,7 +389,7 @@
 
                 <div class="col-md-12">
                   <label for="validationDefault02" class="form-label">Paciente</label>
-                  <select class="form-select" name="idPaciente" id="epacientes" aria-label="Floating label select example">
+                  <select class="form-select" name="paciente" id="epacientes" aria-label="Floating label select example">
                  
                   </select>
                  </div>
@@ -397,7 +397,7 @@
            
                     <div class="col-md-12">
                       <label for="validationDefault02" class="form-label">Medico</label>
-                      <select class="form-select" name="idMedico" id="emedicos" aria-label="Floating label select example">
+                      <select class="form-select" name="medico" id="emedicos" aria-label="Floating label select example">
                       
                       </select>
                     
@@ -430,7 +430,7 @@
        
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Aqui puede generar las consultas médicas.</p>
+              <h5 class="card-title">Aqui puede generar las fórmulas médicas.</p>
 
               <!-- Browser Default Validation -->
               <form class="row g-3" id="medicineform" >
@@ -439,7 +439,7 @@
                   <label for="validationDefault02" class="form-label">Medicamento</label>
                  
               
-                    <select class="form-select" name="idItem" id="medicamentos" aria-label="Floating label select example">
+                    <select class="form-select" name="item" id="medicamentos" aria-label="Floating label select example">
                       
                     </select>
               
@@ -448,17 +448,16 @@
 
                 <div class="col-md-4">
                   <label for="validationDefault02" class="form-label">Cantidad</label>
-                  <input id="existencia"  name="existencia" type="number" class="form-control" id="validationDefault02" value="" required>
+                  <input id="existencia"  name="cantidad" type="number" class="form-control" id="validationDefault02" value="" required>
                 </div>
 
 
 
-                <label for="validationDefault02" class="form-label">Posologia</label>
-                    
+                <label for="validationDefault02" name="posologia"  id="eposologia" class="form-label">Posologia</label>
+              
                 <div class="form-floating mb-4">
                
-                  <textarea class="form-control" placeholder="Leave a comment here" id="validationDefault02" style="height: 100px;"></textarea>
-       
+             
                 </div>
 
                 <div class="col-md-4">
@@ -468,7 +467,7 @@
 
                 <div class="col-md-4">
                   <label for="validationDefault02" class="form-label">Paciente</label>
-                  <select class="form-select" name="idPaciente" id="pacientes" aria-label="Floating label select example">
+                  <select class="form-select" name="paciente" id="pacientes" aria-label="Floating label select example">
                  
                   </select>
                  </div>
@@ -476,7 +475,7 @@
            
                     <div class="col-md-4">
                       <label for="validationDefault02" class="form-label">Medico</label>
-                      <select class="form-select" name="idMedico" id="medicos" aria-label="Floating label select example">
+                      <select class="form-select" name="medico" id="medicos" aria-label="Floating label select example">
                       
                       </select>
                     

@@ -9,7 +9,7 @@ const date = EXPRESSJS.Router();
 //Consultar todos
 
 date.get("/date/listing", (req, res) => {
-    conexion.query(`SELECT hospisoft_paciente.nombrePaciente as Paciente ,hospisoft_paciente.apellidosPaciente as Apellido, posologia as Posologia , hospisoft_medico.nombreMedico as Medico, hospisoft_medico.especialidadMedico as Especialidad ,hospisoft_formula.fecha as Fecha ,  hospisoft_item.descripcion, cantidad
+    conexion.query(`SELECT hospisoft_formula.consecutivo, hospisoft_paciente.nombrePaciente as Paciente ,hospisoft_paciente.apellidosPaciente as Apellido, posologia as Posologia , hospisoft_medico.nombreMedico as Medico, hospisoft_medico.especialidadMedico as Especialidad ,hospisoft_formula.fecha as Fecha ,  hospisoft_item.descripcion, cantidad
     FROM hospisoft_detalleformula
     INNER JOIN hospisoft_formula 
     ON hospisoft_detalleformula.consecutivoformula = hospisoft_formula.consecutivoformula
@@ -41,10 +41,12 @@ date.get("/date/listing", (req, res) => {
   date.post("/date/create", (req, res) => {
 
     let frmdata = {
-      descripcion: req.body.descripcion,
-      existencia: req.body.existencia,
-     
+      idItem: req.body.item,
+      cantidad: req.body.cantidad,
+      posologia: req.body.posologia,
     };
+
+   
     conexion.query(
       "INSERT INTO hospisoft_item SET ?",
       frmdata,
@@ -64,9 +66,17 @@ date.get("/date/listing", (req, res) => {
           });
         }
       }
+
+
+      
     );
-
-
+let consecutivo = "";
+    let frmdata2 = {
+      Idmedico: req.body.medico,
+      consecutivoformula: consecutivo,
+      Idpaciente: req.body.paciente,
+      fecha: req.body.fecha,
+    };
   });
 
   date.post("/date/edit", (req, res) => {

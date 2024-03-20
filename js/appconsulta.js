@@ -109,11 +109,11 @@ if(data.status == "ok"){
 
 
 
-function leer(id,descripcion,existencia) {
+function leer(id,fecha) {
   
 document.getElementById("id").value = id;
-document.getElementById("descripcion").value = descripcion;
-document.getElementById("existencia").value = existencia;
+const date = new Date(fecha).toISOString().slice(0, 10);
+document.getElementById("fecha").value = date;
 
 
 }
