@@ -8,8 +8,8 @@ const conexion = MYSQL.createConnection({
     host: "localhost",
     user: 'root',
     password: '',
-    database: 'bd_hospisoft',
-    port:4400
+    database: 'bd_hospisoft'
+    
   });
 
   conexion.connect((error)=>{

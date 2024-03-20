@@ -15,7 +15,7 @@ document.getElementById("medicineform")?.addEventListener("submit", (event) => {
   });
   var json = JSON.stringify(datos);
 
- fetch("http://localhost:2000/medicine/create", {
+ fetch("http://localhost:2000/user/create", {
      
   headers: {"Content-Type": "application/json"},
    method: "POST",
@@ -69,7 +69,7 @@ document.getElementById("feditar")?.addEventListener("submit", (event) => {
   });
   var json = JSON.stringify(datos);
 
- fetch("http://localhost:2000/medicine/edit", {
+ fetch("http://localhost:2000/user/edit", {
      
   headers: {"Content-Type": "application/json"},
    method: "POST",
@@ -109,12 +109,19 @@ if(data.status == "ok"){
 
 
 
-function leer(id,descripcion,existencia) {
+function leer(id,nombres,apellidos,correo,movil,fijo,nacimiento,eps,usuario) {
   
 document.getElementById("id").value = id;
-document.getElementById("descripcion").value = descripcion;
-document.getElementById("existencia").value = existencia;
-
+document.getElementById("enombre").value = nombres;
+document.getElementById("eapellido").value = apellidos;
+document.getElementById("ecorreo").value = correo;
+document.getElementById("emovil").value = movil;
+document.getElementById("efijo").value = fijo;
+const date = new Date(nacimiento).toISOString().slice(0, 10);
+console.log(date)
+document.getElementById("edate").value = date;
+document.getElementById("eeps").value = eps;
+document.getElementById("euser").value = usuario;
 
 }
 
@@ -126,8 +133,8 @@ document.getElementById("existencia").value = existencia;
 
   
 
-  let Paso = 0;
-  let API = "http://localhost:2000/date/listing"
+  let Paso = -1;
+  let API = "http://localhost:2000/user/listing"
   let largo = 0;
   let keys = [];
   let ind = 0;
@@ -196,15 +203,17 @@ document.getElementById("existencia").value = existencia;
                 res[i][keys[j]]
               }" class="img-thumbnail">`;
             }
+if(keys[j] == "contraseña"){
+  contenido ="***"
 
+}
             fila.innerHTML += `<td scope="col">${contenido}  </td>`;
             fila.setAttribute("data-bs-toggle", "modal");
             fila.setAttribute("data-bs-target", "#exampleModal");
             fila.setAttribute("data-bs-whatever", "@mdo");
             fila.setAttribute(
               "onclick",
-              `leer(${res[i]["Iditem"]},"${res[i]["descripcion"]}","${res[i]["existencia"]}")`
-            );
+              `leer("${res[i]["id"]}","${res[i]["nombres"]}","${res[i]["apellidos"]}","${res[i]["email"]}","${res[i]["movil"]}","${res[i]["fijo"]}","${res[i]["nacimiento"]}","${res[i]["eps"]}","${res[i]["usuario"]}")`);
            
 
             elementostabla.appendChild(fila);

@@ -311,17 +311,17 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="root-pacientes.html">
+            <a href="root-pacientes.html" >
               <i class="bi bi-circle"></i><span>Pacientes</span>
             </a>
           </li>
           <li>
-            <a href="root-medicos.html"  >
+            <a href="root-medicos.html" class="active" >
               <i class="bi bi-circle"></i><span>Médicos</span>
             </a>
           </li>  
           <li>
-            <a href="root-medicamentos.html" class="active">
+            <a href="root-medicamentos.html">
               <i class="bi bi-circle"></i><span>Medicamentos</span>
             </a>
           </li>
@@ -341,7 +341,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Medicamentos</h1>
+      <h1>Médicos</h1>
     
     </div><!-- End Page Title -->
 
@@ -356,14 +356,36 @@
           <div class="modal-body">
             <form id="feditar">
               <div class="mb-3">
+               
+
                 <div class="col-md-12">
-                  <label for="validationDefault01" class="form-label">Descripción</label>
-                  <input id="descripcion" name="descripcion" type="text" class="form-control" id="validationDefault01" value="" required>
+                  <label for="validationDefault01" class="form-label">Nombres</label>
+                  <input id="enombre" name="name" type="text" class="form-control" id="validationDefault01" value="" required>
                 </div>
                 <div class="col-md-12">
-                  <label for="validationDefault02" class="form-label">Existencias</label>
-                  <input id="existencia"  name="existencia" type="number" class="form-control" id="validationDefault02" value="" required>
+                  <label for="validationDefault02" class="form-label">Apellidos</label>
+                  <input id="eapellido"  name="lastname" type="text" class="form-control" id="validationDefault02" value="" required>
                 </div>
+                <div class="col-md-12">
+                  <label for="validationDefault02" class="form-label">Especialidad</label>
+                  <input id="eespecilidad"  name="especialidad" type="text" class="form-control" id="validationDefault02" value="" required>
+                </div>
+                <div class="col-md-12">
+                  <label for="validationDefault02" class="form-label">Correo</label>
+                  <input id="ecorreo"  name="email" type="email" class="form-control" id="validationDefault02" value="" required>
+                </div>
+
+                <div class="col-md-12">
+                  <label for="validationDefault02" class="form-label">Contraseña</label>
+                  <input id="epass"  name="password" type="password" class="form-control" id="validationDefault02" value="" required>
+                </div>
+
+
+                <div class="col-md-12">
+                  <label for="validationDefault02" class="form-label">Rol</label>
+                  <input id="erol"  name="rol" type="text" class="form-control" id="validationDefault02" value="" required>
+                </div>
+
              
                 <input id="id"  name="id" type="hidden" class="form-control" id="validationDefault02" value="" required>
 
@@ -386,20 +408,40 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Agregar medicamentos al inventario</h5>
-              <p>Aqui puedes ver y gestionar el inventario del hospital.</p>
+              <h5 class="card-title">Gestión de medicos</h5>
+              <p>Aqui puedes ver y gestionar los médicos en la base de datos.</p>
 
               <!-- Browser Default Validation -->
               <form class="row g-3" id="medicineform" >
+            
+
                 <div class="col-md-4">
-                  <label for="validationDefault01" class="form-label">Descripción</label>
-                  <input name="descripcion" type="text" class="form-control" id="validationDefault01" value="" required>
+                  <label for="validationDefault01" class="form-label">Nombres</label>
+                  <input id="nombre" name="name" type="text" class="form-control" id="validationDefault01" value="" required>
                 </div>
                 <div class="col-md-4">
-                  <label for="validationDefault02" class="form-label">Existencias</label>
-                  <input  name="existencia" type="number" class="form-control" id="validationDefault02" value="" required>
+                  <label for="validationDefault02" class="form-label">Apellidos</label>
+                  <input id="apellido"  name="lastname" type="text" class="form-control" id="validationDefault02" value="" required>
                 </div>
-              
+                <div class="col-md-4">
+                  <label for="validationDefault02" class="form-label">Especialidad</label>
+                  <input id="especilidad"  name="especialidad" type="text" class="form-control" id="validationDefault02" value="" required>
+                </div>
+                <div class="col-md-4">
+                  <label for="validationDefault02" class="form-label">Correo</label>
+                  <input id="correo"  name="email" type="email" class="form-control" id="validationDefault02" value="" required>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="validationDefault02" class="form-label">Contraseña</label>
+                  <input id="pass"  name="password" type="password" class="form-control" id="validationDefault02" value="" required>
+                </div>
+
+
+                <div class="col-md-4">
+                  <label for="validationDefault02" class="form-label">Rol</label>
+                  <input id="rol"  name="rol" type="text" class="form-control" id="validationDefault02" value="" required>
+                </div>
           
              
                 <div class="col-12">
@@ -453,7 +495,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="js/appitem.js"></script>
+  <script src="js/appmedic.js"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>

@@ -29,7 +29,7 @@ medic.post("/medic/create", (req, res) => {
           insertar = false;
         }
       });
-
+console.log(consulta)
       if(insertar == true){
         conexion.query(
           "INSERT INTO hospisoft_medico SET ?",

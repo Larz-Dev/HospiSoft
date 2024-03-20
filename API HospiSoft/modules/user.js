@@ -201,7 +201,7 @@ console.log(emaill);
 
 
 user.get("/user/listing", (req, res) => {
-  conexion.query("SELECT * FROM hospisoft_paciente", (error, datos) => {
+  conexion.query("SELECT idPaciente as id, nombrePaciente as nombres, apellidosPaciente as apellidos, emailPaciente as email, movilPaciente as movil, telefonoPaciente as fijo, fechaNacimiento as nacimiento, epsPaciente as eps, usuarioPaciente as usuario, passwordPaciente as contraseña FROM hospisoft_paciente", (error, datos) => {
    
     try {
       res.status(200).send(datos);

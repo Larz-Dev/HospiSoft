@@ -15,7 +15,7 @@ document.getElementById("medicineform")?.addEventListener("submit", (event) => {
   });
   var json = JSON.stringify(datos);
 
- fetch("http://localhost:2000/medicine/create", {
+ fetch("http://localhost:2000/medic/create", {
      
   headers: {"Content-Type": "application/json"},
    method: "POST",
@@ -69,7 +69,7 @@ document.getElementById("feditar")?.addEventListener("submit", (event) => {
   });
   var json = JSON.stringify(datos);
 
- fetch("http://localhost:2000/medicine/edit", {
+ fetch("http://localhost:2000/medic/edit", {
      
   headers: {"Content-Type": "application/json"},
    method: "POST",
@@ -109,12 +109,15 @@ if(data.status == "ok"){
 
 
 
-function leer(id,descripcion,existencia) {
+function leer(id,nombres,apellidos,correo,especialidad,rol,pass) {
   
 document.getElementById("id").value = id;
-document.getElementById("descripcion").value = descripcion;
-document.getElementById("existencia").value = existencia;
-
+document.getElementById("enombre").value = nombres;
+document.getElementById("eapellido").value = apellidos;
+document.getElementById("ecorreo").value = correo;
+document.getElementById("eespecilidad").value = especialidad;
+document.getElementById("erol").value = rol;
+document.getElementById("epass").value = "";
 
 }
 
@@ -126,8 +129,8 @@ document.getElementById("existencia").value = existencia;
 
   
 
-  let Paso = 0;
-  let API = "http://localhost:2000/date/listing"
+  let Paso = -1;
+  let API = "http://localhost:2000/medic/listing"
   let largo = 0;
   let keys = [];
   let ind = 0;
@@ -196,14 +199,17 @@ document.getElementById("existencia").value = existencia;
                 res[i][keys[j]]
               }" class="img-thumbnail">`;
             }
+if(keys[j] == "passwordMedico"){
+  contenido ="***"
 
+}
             fila.innerHTML += `<td scope="col">${contenido}  </td>`;
             fila.setAttribute("data-bs-toggle", "modal");
             fila.setAttribute("data-bs-target", "#exampleModal");
             fila.setAttribute("data-bs-whatever", "@mdo");
             fila.setAttribute(
               "onclick",
-              `leer(${res[i]["Iditem"]},"${res[i]["descripcion"]}","${res[i]["existencia"]}")`
+              `leer(${res[i]["IdMedico"]},"${res[i]["nombreMedico"]}","${res[i]["apellidosMedico"]}","${res[i]["emailMedico"]}","${res[i]["especialidadMedico"]}","${res[i]["rolMedico"]}","***")`
             );
            
 
