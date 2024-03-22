@@ -36,16 +36,16 @@
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.css" rel="stylesheet"> <!-- Vendor CSS Files -->
+   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+
+  <link rel="stylesheet" href="/assets/css/responsivedatatable.css">
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
@@ -360,7 +360,7 @@
                   <label for="validationDefault02" class="form-label">Medicamento</label>
                  
               
-                    <select class="form-select" name="item" id="emedicamentos" aria-label="Floating label select example">
+                    <select class="form-select" name="item" id="2medicamentos" aria-label="Floating label select example">
                       
                     </select>
               
@@ -389,7 +389,7 @@
 
                 <div class="col-md-12">
                   <label for="validationDefault02" class="form-label">Paciente</label>
-                  <select class="form-select" name="paciente" id="epacientes" aria-label="Floating label select example">
+                  <select class="form-select" name="idpaciente" id="2acientes" aria-label="Floating label select example">
                  
                   </select>
                  </div>
@@ -397,7 +397,7 @@
            
                     <div class="col-md-12">
                       <label for="validationDefault02" class="form-label">Medico</label>
-                      <select class="form-select" name="medico" id="emedicos" aria-label="Floating label select example">
+                      <select class="form-select" name="idmedico" id="2medicos" aria-label="Floating label select example">
                       
                       </select>
                     
@@ -439,9 +439,10 @@
                   <label for="validationDefault02" class="form-label">Medicamento</label>
                  
               
-                    <select class="form-select" name="item" id="medicamentos" aria-label="Floating label select example">
+                    <select class="form-select"  id="medicamentos" aria-label="Floating label select example">
                       
                     </select>
+                    <input hidden type="text"  id="medica" name="item" hid>
               
                    </div>
            
@@ -453,12 +454,16 @@
 
 
 
-                <label for="validationDefault02" name="posologia"  id="eposologia" class="form-label">Posologia</label>
-              
-                <div class="form-floating mb-4">
-               
              
+                <label for="validationDefault02" class="form-label">Posologia</label>
+                    
+                <div class="form-floating mb-12">
+               
+                  <textarea class="form-control" id="posologias" placeholder="" id="validationDefault02" style="height: 100px;"></textarea>
+                  <input hidden type="text"  id="poso" name="posologia">
+              
                 </div>
+
 
                 <div class="col-md-4">
                   <label for="validationDefault02" class="form-label">Fecha</label>
@@ -467,16 +472,18 @@
 
                 <div class="col-md-4">
                   <label for="validationDefault02" class="form-label">Paciente</label>
-                  <select class="form-select" name="paciente" id="pacientes" aria-label="Floating label select example">
+                  <select class="form-select"  id="pacientes" aria-label="Floating label select example">
                  
                   </select>
+                  <input hidden type="text" id="paci" name="idpaciente">
                  </div>
 
            
                     <div class="col-md-4">
                       <label for="validationDefault02" class="form-label">Medico</label>
-                      <select class="form-select" name="medico" id="medicos" aria-label="Floating label select example">
-                      
+                      <select class="form-select" name="idmedico" id="medicos" aria-label="Floating label select example">
+                        <input hidden type="text" id="medi" name="idmedico">
+              
                       </select>
                     
                        </div>
@@ -501,7 +508,7 @@
             <div class="card-body">
         <br>
               <!-- Table with stripped rows -->
-              <table   id="tabla" class="table datatable">
+              <table   id="tabla" class="table" width="100%" cellspacing="0">
                 <thead id="appendcabezera"></thead>
               </table>
 
@@ -544,15 +551,35 @@
   <script src="assets/vendor/echarts/echarts.min.js"></script>
   <script src="assets/vendor/quill/quill.min.js"></script>
  
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  
+
+
+
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="js/selectfillConsultas.js"></script>
-  <script src="assets/js/main.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.js"></script>
+<script src="/assets/js/responsibledatatable.js"></script>
+
+<script>
+setTimeout(() => {
+  $('#tabla').DataTable( {
+     autoWidth: false,
+ responsive: true
+  
+} );
+}, "300");
+  
+</script>
   <script src="js/sesion.js"></script>
- 
+  <script src="assets/js/main.js"></script>
+
+
+
 
   <!-- Template Main JS File -->
  

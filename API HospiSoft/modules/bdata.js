@@ -8,7 +8,8 @@ const conexion = MYSQL.createConnection({
     host: "localhost",
     user: 'root',
     password: '',
-    database: 'bd_hospisoft'
+    database: 'bd_hospisoft',
+    multipleStatements: 'true'
     
   });
 

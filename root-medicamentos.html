@@ -32,11 +32,13 @@
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+<link rel="stylesheet" href="/assets/css/responsivedatatable.css">
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+  <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.css" rel="stylesheet"> <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="/assets/css/responsivedatatable.css">
+  
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -44,7 +46,6 @@
   <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -278,14 +279,14 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
-        <a class="nav-link " href="index-root.html">
+        <a class="nav-link collapse collapsed " href="index-root.html">
           <i class="bi bi-grid"></i>
           <span>Estadísticas</span>
         </a>
       </li>
     
-      <li class="nav-item">
-        <a class="nav-link " data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <li class="nav-item  ">
+        <a class="nav-link collapse collapsed " data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Gestión y consultas</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -306,7 +307,7 @@
       </li><!-- End Forms Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapse" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Bases de datos</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
@@ -416,7 +417,7 @@
             <div class="card-body">
         <br>
               <!-- Table with stripped rows -->
-              <table   id="tabla" class="table datatable">
+              <table   id="tabla" class="table" width="100%" cellspacing="0">
                 <thead id="appendcabezera"></thead>
               </table>
 
@@ -460,16 +461,31 @@
   <script src="assets/vendor/echarts/echarts.min.js"></script>
   <script src="assets/vendor/quill/quill.min.js"></script>
  
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   
+
+
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script src="assets/js/main.js"></script>
   <script src="js/sesion.js"></script>
- 
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.js"></script>
+  <script src="/assets/js/responsibledatatable.js"></script>
+  
+  <script>
+  setTimeout(() => {
+    $('#tabla').DataTable( {
+       autoWidth: false,
+   responsive: true
+    
+  } );
+  }, "300");
+    
+  </script>
   <!-- Template Main JS File -->
  
 </body>

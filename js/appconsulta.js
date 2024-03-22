@@ -1,7 +1,32 @@
 
 
+
+
+
+
 document.getElementById("medicineform")?.addEventListener("submit", (event) => {
   event.preventDefault(); // Prevent the form from submitting normally
+
+
+  var e = document.getElementById("pacientes");
+  var val = e.value;
+
+  document.getElementById('paci').value=val
+  
+  e = document.getElementById("medicos");
+   val = e.value;
+
+  document.getElementById('medi').value=val
+  
+  e = document.getElementById("medicamentos");
+  val = e.value;
+  
+  document.getElementById('medica').value=val
+
+
+  document.getElementById('poso').value=document.getElementById("posologias").value;
+  
+  
 
   // Get the form data
   const formData = new FormData(event.target);
@@ -15,7 +40,7 @@ document.getElementById("medicineform")?.addEventListener("submit", (event) => {
   });
   var json = JSON.stringify(datos);
 
- fetch("http://localhost:2000/medicine/create", {
+ fetch("http://localhost:2000/date/create", {
      
   headers: {"Content-Type": "application/json"},
    method: "POST",
@@ -112,9 +137,6 @@ if(data.status == "ok"){
 function leer(id,fecha) {
   
 document.getElementById("id").value = id;
-const date = new Date(fecha).toISOString().slice(0, 10);
-document.getElementById("fecha").value = date;
-
 
 }
 
@@ -126,7 +148,7 @@ document.getElementById("fecha").value = date;
 
   
 
-  let Paso = 0;
+  let Paso = -1;
   let API = "http://localhost:2000/date/listing"
   let largo = 0;
   let keys = [];
@@ -203,7 +225,7 @@ document.getElementById("fecha").value = date;
             fila.setAttribute("data-bs-whatever", "@mdo");
             fila.setAttribute(
               "onclick",
-              `leer(${res[i]["Iditem"]},"${res[i]["descripcion"]}","${res[i]["existencia"]}")`
+              `leer(${res[i]["Iditem"]})`
             );
            
 
