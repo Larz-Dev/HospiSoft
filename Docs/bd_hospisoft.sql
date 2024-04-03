@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-03-2024 a las 17:33:30
+-- Tiempo de generación: 03-04-2024 a las 18:35:20
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,6 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `hospisoft_cita`
+--
+
+CREATE TABLE `hospisoft_cita` (
+  `idcita` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `idmedico` int(11) NOT NULL,
+  `idpaciente` int(11) NOT NULL,
+  `razon` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `hospisoft_cita`
+--
+
+INSERT INTO `hospisoft_cita` (`idcita`, `fecha`, `idmedico`, `idpaciente`, `razon`) VALUES
+(1, '2024-04-02', 2, 11, 'asdad'),
+(2, '2024-04-02', 1, 7, 'afasd');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `hospisoft_detalleformula`
 --
 
@@ -40,14 +62,17 @@ CREATE TABLE `hospisoft_detalleformula` (
 --
 
 INSERT INTO `hospisoft_detalleformula` (`Iddetalle`, `iditem`, `cantidad`, `posologia`, `formula`) VALUES
-(1, 2, 20, 'asdqwdwdqwd', 1),
-(5, 1, 1, 'ggssg', 10),
-(6, 2, 2, 'adgsfh', 11),
+(1, 2, 20, 'Hola mundosdsssssdasd', 1),
+(5, 1, 1, 'ggssga', 10),
+(6, 4, 2, 'adgsfh', 11),
 (7, 2, 2, 'adgsfh', 12),
 (8, 2, 2, 'adgsfh', 13),
 (9, 2, 2, 'adgsfh', 14),
-(10, 2, 2, 'adgsfh', 15),
-(11, 1, 677, 'fghdfhfgh', 16);
+(10, 1, 1, 'ggssgaaaaaaaaaaaaaaaaaaaaaaaa', 15),
+(11, 1, 677, 'fghdfhfgh', 16),
+(12, 2, 2, 'a', 17),
+(13, 3, 1, 'ffffffffffffffffff', 18),
+(14, 2, 2, 'adgsfhdddddddddddddddd', 19);
 
 -- --------------------------------------------------------
 
@@ -69,17 +94,20 @@ CREATE TABLE `hospisoft_formula` (
 INSERT INTO `hospisoft_formula` (`consecutivo`, `idMedico`, `idPaciente`, `fecha`) VALUES
 (1, 1, 1, '2024-03-11'),
 (5, 1, 1, '2000-01-01'),
-(6, 1, 0, '2000-01-01'),
+(6, 1, 1, '2000-01-01'),
 (7, 1, 1, '2000-01-01'),
 (8, 1, 1, '2000-01-01'),
 (9, 1, 1, '2000-01-01'),
 (10, 1, 1, '2000-01-01'),
 (11, 1, 1, '2000-01-01'),
-(12, 1, 1, '2000-01-01'),
-(13, 1, 1, '2000-01-01'),
-(14, 1, 1, '2000-01-01'),
+(12, 1, 1, '2024-04-03'),
+(13, 2, 13, '2024-04-12'),
+(14, 2, 11, '2024-04-17'),
 (15, 1, 1, '2000-01-01'),
-(16, 2, 8, '2024-02-28');
+(16, 1, 1, '2024-02-28'),
+(17, 1, 1, '2024-04-03'),
+(18, 2, 13, '2024-04-12'),
+(19, 2, 11, '2024-04-17');
 
 -- --------------------------------------------------------
 
@@ -178,17 +206,28 @@ CREATE TABLE `hospisoft_users` (
 --
 
 --
+-- Indices de la tabla `hospisoft_cita`
+--
+ALTER TABLE `hospisoft_cita`
+  ADD PRIMARY KEY (`idcita`),
+  ADD KEY `idmedico` (`idmedico`),
+  ADD KEY `idpaciente` (`idpaciente`);
+
+--
 -- Indices de la tabla `hospisoft_detalleformula`
 --
 ALTER TABLE `hospisoft_detalleformula`
   ADD PRIMARY KEY (`Iddetalle`),
-  ADD KEY `iditem` (`iditem`);
+  ADD KEY `iditem` (`iditem`),
+  ADD KEY `formula` (`formula`);
 
 --
 -- Indices de la tabla `hospisoft_formula`
 --
 ALTER TABLE `hospisoft_formula`
-  ADD PRIMARY KEY (`consecutivo`);
+  ADD PRIMARY KEY (`consecutivo`),
+  ADD KEY `idMedico` (`idMedico`),
+  ADD KEY `idPaciente` (`idPaciente`);
 
 --
 -- Indices de la tabla `hospisoft_item`
@@ -219,16 +258,22 @@ ALTER TABLE `hospisoft_users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `hospisoft_cita`
+--
+ALTER TABLE `hospisoft_cita`
+  MODIFY `idcita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `hospisoft_detalleformula`
 --
 ALTER TABLE `hospisoft_detalleformula`
-  MODIFY `Iddetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Iddetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `hospisoft_formula`
 --
 ALTER TABLE `hospisoft_formula`
-  MODIFY `consecutivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `consecutivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `hospisoft_item`
@@ -259,11 +304,26 @@ ALTER TABLE `hospisoft_users`
 --
 
 --
+-- Filtros para la tabla `hospisoft_cita`
+--
+ALTER TABLE `hospisoft_cita`
+  ADD CONSTRAINT `hospisoft_cita_ibfk_1` FOREIGN KEY (`idmedico`) REFERENCES `hospisoft_medico` (`IdMedico`),
+  ADD CONSTRAINT `hospisoft_cita_ibfk_2` FOREIGN KEY (`idpaciente`) REFERENCES `hospisoft_paciente` (`idPaciente`);
+
+--
 -- Filtros para la tabla `hospisoft_detalleformula`
 --
 ALTER TABLE `hospisoft_detalleformula`
   ADD CONSTRAINT `hospisoft_detalleformula_ibfk_1` FOREIGN KEY (`iditem`) REFERENCES `hospisoft_item` (`Iditem`),
-  ADD CONSTRAINT `hospisoft_detalleformula_ibfk_2` FOREIGN KEY (`Iddetalle`) REFERENCES `hospisoft_formula` (`consecutivo`);
+  ADD CONSTRAINT `hospisoft_detalleformula_ibfk_2` FOREIGN KEY (`Iddetalle`) REFERENCES `hospisoft_formula` (`consecutivo`),
+  ADD CONSTRAINT `hospisoft_detalleformula_ibfk_3` FOREIGN KEY (`formula`) REFERENCES `hospisoft_formula` (`consecutivo`);
+
+--
+-- Filtros para la tabla `hospisoft_formula`
+--
+ALTER TABLE `hospisoft_formula`
+  ADD CONSTRAINT `hospisoft_formula_ibfk_1` FOREIGN KEY (`idMedico`) REFERENCES `hospisoft_medico` (`IdMedico`),
+  ADD CONSTRAINT `hospisoft_formula_ibfk_2` FOREIGN KEY (`idPaciente`) REFERENCES `hospisoft_paciente` (`idPaciente`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
