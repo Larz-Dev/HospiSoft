@@ -2,28 +2,39 @@
 const { isSet } = require("util/types");
 const conexion = require("./bdata");
 const EXPRESSJS = require("express");
-const date = EXPRESSJS.Router();
+const formula = EXPRESSJS.Router();
 
 //Desarrollo del CRUD
 
 
 //Consultar todos
 
-date.get("/date/listing", (req, res) => {
+formula.get("/formula/listing", (req, res) => {
     conexion.query(`SELECT 
     
-    hospisoft_cita.idcita as id,
-    hospisoft_cita.fecha,
-    hospisoft_cita.razon,
-    hospisoft_paciente.nombrepaciente as Paciente,
-    hospisoft_medico.nombreMedico as Medico
-    FROM 
-    hospisoft_cita
+    hospisoft_paciente.nombrePaciente as Paciente,
+    hospisoft_paciente.apellidosPaciente as Apellido,
+    hospisoft_detalleformula.posologia as Posologia,
+    hospisoft_medico.nombreMedico as Medico,
+    hospisoft_medico.especialidadMedico as Especialidad,
+    hospisoft_formula.fecha as Fecha,
+    hospisoft_item.descripcion,
+    hospisoft_detalleformula.cantidad,hospisoft_detalleformula.formula as "Id formula",
+    hospisoft_detalleformula.iditem as "Id item",
+    hospisoft_detalleformula.Iddetalle as "Id detalle",
+    hospisoft_formula.idpaciente as "Id paciente" ,
+    hospisoft_formula.idMedico as "Id medico",
+    hospisoft_formula.Consecutivo as "consecutivo"
+FROM 
+    hospisoft_detalleformula
 INNER JOIN 
-    hospisoft_medico ON hospisoft_medico.IdMedico = hospisoft_cita.idmedico
+    hospisoft_formula ON hospisoft_detalleformula.formula = hospisoft_formula.consecutivo
 INNER JOIN 
-    hospisoft_paciente ON hospisoft_paciente.idPaciente = hospisoft_cita.idpaciente
-;`, (error, datos) => {
+    hospisoft_medico ON hospisoft_medico.IdMedico = hospisoft_formula.idMedico
+INNER JOIN 
+    hospisoft_paciente ON hospisoft_paciente.idPaciente = hospisoft_formula.idPaciente
+INNER JOIN 
+    hospisoft_item ON hospisoft_item.Iditem = hospisoft_detalleformula.iditem;`, (error, datos) => {
      
       try {
         res.status(200).send(datos);
@@ -43,17 +54,18 @@ INNER JOIN
   });
   
 
-  date.post("/date/create", (req, res) => {
+  formula.post("/formula/create", (req, res) => {
 
    
     let frmdata = {
     
-      razon: req.body.razon,
+      consecutivoformula: req.body.consecutivo,
       idMedico: req.body.idmedico,
       idPaciente: req.body.idpaciente,
       fecha: req.body.fecha,
-      id: req.body.id,
-
+      iditem: req.body.item,
+      cantidad: req.body.cantidad,
+      posologia: req.body.posologia,
 
     };
 
@@ -102,7 +114,7 @@ if(isSet(error) != null){
   
   });
 
-  date.post("/date/edit", (req, res) => {
+  formula.post("/formula/edit", (req, res) => {
     let frmdata = {
     
       consecutivoformula: req.body.consecutivo,
@@ -144,4 +156,4 @@ if(isSet(error) != null){
 
   });
   
-  module.exports = date;
+  module.exports = formula;

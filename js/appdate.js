@@ -30,7 +30,7 @@ document.getElementById("dateform")?.addEventListener("submit", (event) => {
   });
   var json = JSON.stringify(datos);
 
-  fetch("http://localhost:2000/formula/create", {
+  fetch("http://localhost:2000/date/create", {
     headers: { "Content-Type": "application/json" },
     method: "POST",
     mode: "cors",
@@ -75,7 +75,7 @@ document.getElementById("feditar")?.addEventListener("submit", (event) => {
   });
   var json = JSON.stringify(datos);
 
-  fetch("http://localhost:2000/formula/edit", {
+  fetch("http://localhost:2000/date/edit", {
     headers: { "Content-Type": "application/json" },
     method: "POST",
     mode: "cors",
@@ -121,7 +121,7 @@ function leer(idpaciente,idmedico,iddetalle,idconsecutivo,iditem, fecha,posologi
 }
 
 let Paso = -1;
-let API = "http://localhost:2000/formula/listing";
+let API = "http://localhost:2000/date/listing";
 let largo = 0;
 let keys = [];
 let ind = 0;

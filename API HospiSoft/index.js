@@ -36,6 +36,7 @@ var corsOptions = {
 app.use("/",CORS(corsOptions),require("./modules/medicine"))
 app.use("/",CORS(corsOptions),require("./modules/user"))
 app.use("/",CORS(corsOptions),require("./modules/medic"))
+app.use("/",CORS(corsOptions),require("./modules/formula"))
 app.use("/",CORS(corsOptions),require("./modules/date"))
 
 //inicio la aplicación permitiendo su escucha en el puerto designado

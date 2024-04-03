@@ -2,12 +2,15 @@
 <script>
 
 
-  if(localStorage.getItem('EMAIL')== "" || localStorage.getItem('ID') ==""){
+  if((localStorage.getItem('EMAIL')== "" || localStorage.getItem('ID') =="")  || (localStorage.getItem('EMAIL')==  null || localStorage.getItem('ID')==  null)){
   
 
     
     window.location.replace("/pages-login.html")
-  }else{
+  }
+  
+  
+  else{
 
     console.log(localStorage.getItem('EMAIL'));
                     console.log(localStorage.getItem('ID'));
@@ -292,9 +295,9 @@
        
         <li>
             <a href="root-consultas.html"  class="active">
-              <i class="bi bi-circle"></i><span>Consultas médicas</span>
+              <i class="bi bi-circle"></i><span>Fórmulas médicas</span>
             </a>
-            <a href="forms-validation.html">
+            <a href="root-citas.html">
               <i class="bi bi-circle"></i><span>Gestión de citas</span>
             </a>
             <a href="forms-validation.html" >
@@ -311,12 +314,12 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="tables-general.html">
+            <a href="root-pacientes.html">
               <i class="bi bi-circle"></i><span>Pacientes</span>
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a href="root-medicos.html">
               <i class="bi bi-circle"></i><span>Médicos</span>
             </a>
           </li>  
@@ -389,7 +392,7 @@
 
                 <div class="col-md-12">
                   <label for="validationDefault02" class="form-label">Paciente</label>
-                  <select class="form-select" name="idpaciente" id="2acientes" aria-label="Floating label select example">
+                  <select class="form-select" name="idpaciente" id="2pacientes" aria-label="Floating label select example">
                  
                   </select>
                  </div>
@@ -403,9 +406,10 @@
                     
                        </div>
                
-             
-                <input id="id"  name="id" type="hidden" class="form-control" id="validationDefault02" value="" required>
+              <input id="idconsecutivo"  name="consecutivo" type="hidden" class="form-control" id="validationDefault02" value="" required>
+              <input id="iddetalle"  name="detalle" type="hidden" class="form-control" id="validationDefault02" value="" required>
 
+        
               </div>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
               <button type="submit" id="btneditar" class="btn btn-primary">Editar</button>
@@ -433,7 +437,7 @@
               <h5 class="card-title">Aqui puede generar las fórmulas médicas.</p>
 
               <!-- Browser Default Validation -->
-              <form class="row g-3" id="medicineform" >
+              <form class="row g-3" id="dateform" >
              
                 <div class="col-md-4">
                   <label for="validationDefault02" class="form-label">Medicamento</label>
