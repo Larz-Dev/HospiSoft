@@ -300,7 +300,7 @@
             <a href="root-citas.html" class="active">
               <i class="bi bi-circle"></i><span>Gestión de citas</span>
             </a>
-            <a href="forms-validation.html" >
+            <a href="root-historias.html" >
               <i class="bi bi-circle"></i><span>Historias Clínicas</span>
             </a>
          
@@ -352,38 +352,18 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar consulta</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Cita</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form id="feditar">
               <div class="mb-3">
               
-                <div class="col-md-12">
-                  <label for="validationDefault02" class="form-label">Medicamento</label>
-                 
-              
-                    <select class="form-select" name="item" id="2medicamentos" aria-label="Floating label select example">
-                      
-                    </select>
-              
-                   </div>
-           
-
-                <div class="col-md-12">
-                  <label for="validationDefault02" class="form-label">Cantidad</label>
-                  <input id="eexistencia"  name="cantidad" type="number" class="form-control" id="validationDefault02" value="" required>
-                </div>
+       
 
 
 
-                <label for="validationDefault02" class="form-label">Posologia</label>
-                    
-                <div class="form-floating mb-12">
-               
-                  <textarea class="form-control" name="posologia" id="eposologia" placeholder="" id="validationDefault02" style="height: 100px;"></textarea>
-            
-                </div>
+             
 
                 <div class="col-md-12">
                   <label for="validationDefault02" class="form-label">Fecha</label>
@@ -405,9 +385,17 @@
                       </select>
                     
                        </div>
+
+                       <label for="validationDefault02" class="form-label">Razón</label>
+                    
+                       <div class="form-floating mb-12">
+                      
+                         <input type="text" class="form-control" name="razon" id="erazon" placeholder="" id="validationDefault02" style="height: 100px;"></input>
+                   
+                       </div>
                
-              <input id="idconsecutivo"  name="consecutivo" type="hidden" class="form-control" id="validationDefault02" value="" required>
-              <input id="iddetalle"  name="detalle" type="hidden" class="form-control" id="validationDefault02" value="" required>
+              <input id="idcita"  name="idcita" type="hidden" class="form-control" id="validationDefault02" value="" required>
+       
 
         
               </div>

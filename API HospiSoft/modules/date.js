@@ -13,10 +13,13 @@ date.get("/date/listing", (req, res) => {
     conexion.query(`SELECT 
     
     hospisoft_cita.idcita as id,
+    hospisoft_paciente.nombrePaciente as "Nombre paciente",
+    hospisoft_medico.nombreMedico as "Nombre medico",
     hospisoft_cita.fecha,
     hospisoft_cita.razon,
-    hospisoft_paciente.nombrepaciente as Paciente,
-    hospisoft_medico.nombreMedico as Medico
+    hospisoft_paciente.Idpaciente as Paciente,
+    hospisoft_medico.Idmedico as Medico
+    
     FROM 
     hospisoft_cita
 INNER JOIN 
@@ -104,22 +107,17 @@ if(isSet(error) != null){
 
   date.post("/date/edit", (req, res) => {
     let frmdata = {
-    
-      consecutivoformula: req.body.consecutivo,
-      Iddetalle: req.body.detalle,
+      razon: req.body.razon,
       idMedico: req.body.idmedico,
       idPaciente: req.body.idpaciente,
       fecha: req.body.fecha,
-      iditem: req.body.item,
-      cantidad: req.body.cantidad,
-      posologia: req.body.posologia,
+      id: req.body.idcita,
+
 
     };
     console.log(frmdata)
     conexion.query(
-      `update  hospisoft_formula SET  idMedico = ${frmdata.idMedico} , idPaciente=${frmdata.idPaciente},fecha = '${frmdata.fecha}' where consecutivo = ${frmdata.consecutivoformula};
-      update hospisoft_detalleformula SET iditem =  ${frmdata.iditem}, cantidad =  ${frmdata.cantidad}, posologia =  '${frmdata.posologia}' where Iddetalle =  ${frmdata.Iddetalle};
-      `,
+      `update  hospisoft_cita SET  idmedico = ${frmdata.idMedico} , idpaciente=${frmdata.idPaciente},razon='${frmdata.razon}',fecha = '${frmdata.fecha}' where idcita = ${frmdata.id};  `,
       frmdata,
       (error, data) => {
 

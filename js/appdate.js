@@ -106,17 +106,13 @@ document.getElementById("feditar")?.addEventListener("submit", (event) => {
     });
 });
 
-function leer(idpaciente,idmedico,iddetalle,idconsecutivo,iditem, fecha,posologia,existencia) {
+function leer(idcita,idmedico,idpaciente, fecha,razon) {
   
-  document.getElementById("idconsecutivo").value = idconsecutivo;
-   document.getElementById("iddetalle").value = iddetalle;
+  document.getElementById("idcita").value = idcita;
   document.getElementById("2pacientes").value = idpaciente;
   const date = new Date(fecha).toISOString().slice(0, 10);
   document.getElementById("efecha").value = date;
-  document.getElementById("eposologia").value = posologia;
-  document.getElementById("eexistencia").value = existencia ;
-  document.getElementById("2medicamentos").value = iditem;
-
+  document.getElementById("erazon").value = razon;
   document.getElementById("2medicos").value = idmedico;
 }
 
@@ -192,7 +188,7 @@ function autotabla(API) {
           fila.setAttribute("data-bs-toggle", "modal");
           fila.setAttribute("data-bs-target", "#exampleModal");
           fila.setAttribute("data-bs-whatever", "@mdo");
-          fila.setAttribute("onclick", `leer(${res[i]["Id paciente"]},${res[i]["Id medico"]},${res[i]["Id detalle"]},${res[i]["consecutivo"]},${res[i]["Id item"]},"${res[i]["Fecha"]}","${res[i]["Posologia"]}",${res[i]["cantidad"]})`);
+          fila.setAttribute("onclick", `leer(${res[i]["id"]},${res[i]["Medico"]},${res[i]["Paciente"]},"${res[i]["fecha"]}","${res[i]["razon"]}")`);
 
           elementostabla.appendChild(fila);
         }

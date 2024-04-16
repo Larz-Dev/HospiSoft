@@ -38,9 +38,10 @@ app.use("/",CORS(corsOptions),require("./modules/user"))
 app.use("/",CORS(corsOptions),require("./modules/medic"))
 app.use("/",CORS(corsOptions),require("./modules/formula"))
 app.use("/",CORS(corsOptions),require("./modules/date"))
+app.use("/",CORS(corsOptions),require("./modules/history"))
 
 //inicio la aplicación permitiendo su escucha en el puerto designado
-app.listen(port,()=>{
+app.listen(  port,()=>{
     console.log("API encendida en el puerto: "+ port)
 })
 
