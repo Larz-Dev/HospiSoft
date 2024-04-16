@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 03-04-2024 a las 18:35:20
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Servidor: 127.0.0.1:4400
+-- Tiempo de generación: 16-04-2024 a las 23:56:25
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -126,10 +126,24 @@ CREATE TABLE `hospisoft_item` (
 --
 
 INSERT INTO `hospisoft_item` (`Iditem`, `descripcion`, `existencia`) VALUES
-(1, 'Píldorasssss', 100),
+(1, 'editado', 1),
 (2, 'Bendaje', 20),
 (3, 'agua', 123),
-(4, 'ddhbeg', 323);
+(4, 'ddhbeg', 323),
+(5, 'a', 1),
+(6, 'aaaaa', 12),
+(7, 'editado', 1),
+(8, 'aaaaa', 12),
+(9, 'aaaaa', 12),
+(10, 'aaaaa', 12),
+(11, 'aaaaa', 12),
+(12, 'dasdasd', 23),
+(13, 'wawas', 123),
+(14, 'asdddd', 4123),
+(15, 'asd', 4123),
+(16, 'HOLA MUNDO', 987654321),
+(17, 'aaaaaaa', 1),
+(18, 'o', 6);
 
 -- --------------------------------------------------------
 
@@ -279,7 +293,7 @@ ALTER TABLE `hospisoft_formula`
 -- AUTO_INCREMENT de la tabla `hospisoft_item`
 --
 ALTER TABLE `hospisoft_item`
-  MODIFY `Iditem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Iditem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `hospisoft_medico`
