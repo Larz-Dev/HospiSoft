@@ -115,7 +115,7 @@ user.post("/user/edit", (req, res) => {
       
               res.status(404).send({
                 status: "error",
-                mensaje: "Error en la insercion",
+                mensaje: "Error",
            
               });
             }
@@ -169,10 +169,10 @@ console.log(emaill);
         });
 
         if (email == null) {
-          console.log("No se ha encontrado el usuario");
+         
           res.status(400).send({
             status: "error",
-            mensaje: "El usuario no existe en la base de datos",
+            mensaje: "Verifique los campos",
             codigo: "2"
           });
         } else {
@@ -181,7 +181,7 @@ console.log(emaill);
           if (!pwd) {
             res.status(400).send({
               status: "error",
-              mensaje: "Contraseña incorrecta",
+              mensaje: "Verifique los campos",
               codigo: "1"
             });
           } else {
@@ -208,7 +208,7 @@ user.get("/user/listing", (req, res) => {
     }
       catch (err) {
         res.status(404).send({
-         codigo: "No se ha encontrado el inventario",
+         codigo: "Error",
           id: error.code,
           mensaje: error.message
           

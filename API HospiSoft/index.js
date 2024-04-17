@@ -39,6 +39,7 @@ app.use("/",CORS(corsOptions),require("./modules/medic"))
 app.use("/",CORS(corsOptions),require("./modules/formula"))
 app.use("/",CORS(corsOptions),require("./modules/date"))
 app.use("/",CORS(corsOptions),require("./modules/history"))
+app.use("/",CORS(corsOptions),require("./modules/info"))
 
 //inicio la aplicación permitiendo su escucha en el puerto designado
 app.listen(  port,()=>{
