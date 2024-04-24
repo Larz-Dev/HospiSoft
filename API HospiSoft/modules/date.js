@@ -66,9 +66,7 @@ console.log(frmdata)
 
 
     conexion.query(
-    `INSERT INTO hospisoft_formula (consecutivo,idMedico, idPaciente, fecha) VALUES (null,${frmdata.idMedico}, ${frmdata.idPaciente},'${ frmdata.fecha}');
-    SET @last_id = LAST_INSERT_ID();
-    INSERT INTO hospisoft_detalleformula (Iddetalle,iditem, cantidad, posologia, formula) VALUES (null,${frmdata.iditem}, ${frmdata.cantidad}, '${frmdata.posologia}', @last_id);`,
+    `INSERT INTO hospisoft_cita  VALUES (null,'${frmdata.fecha}', ${frmdata.idMedico},${ frmdata.idPaciente},'${frmdata.razon}');`,
 
  
 
