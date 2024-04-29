@@ -10,7 +10,7 @@ let Role =localStorage.getItem('ROLE');
 document.getElementById("email").innerText = Email;
 document.getElementById("user").innerText = User;
 document.getElementById("role").innerText = Role;
-document.getElementById("id").innerText = ID;
+//document.getElementById("id").innerText = ID;
 
 
 

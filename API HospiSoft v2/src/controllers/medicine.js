@@ -35,7 +35,7 @@ export const crearmedicina = async (req, res) => {
   }
   return res.send({
     status: "ok",
-    data: filas,
+    mensaje: "Se ha creado la medicina correctamente",
   });
 };
 
@@ -59,7 +59,43 @@ export const editarmedicina = async (req, res) => {
   }
   return res.send({
     status: "ok",
-    data: filas,
+    mensaje: "se ha editado correctamente",
   });
 };
 
+
+
+export const eliminarmedicina = async (req, res) => {
+  try {
+    
+   
+  /*   let sql = "SELECT * from persona ORDER BY id LIMIT 7"; */
+  
+  let frmdata = {
+
+    id: req.body.id,
+   
+  };
+  let sql ='delete from hospisoft_item  where idItem = '+frmdata.id;
+  let [filas] = await cnx.query(sql,frmdata);
+  if (!filas) {
+    return res.send({
+      status: "error",
+      mensaje: "No hay registros",
+    });
+  }else{ return res.send({
+    status: "ok",
+    mensaje: "Se ha eliminado correctamente",
+  });}
+ 
+}
+catch (error) {
+
+    if(error+"".includes("Cannot delete or update a parent row")){
+      return res.send({
+        status: "error",
+        mensaje: "No es posible eliminar un objeto que ya pertenece a una fórmula",
+      });
+    }
+}
+};

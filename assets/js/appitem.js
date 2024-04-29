@@ -1,5 +1,7 @@
 
 
+
+
 document.getElementById("medicineform")?.addEventListener("submit", (event) => {
   event.preventDefault(); // Prevent the form from submitting normally
 
@@ -45,7 +47,7 @@ if(data.status == "ok"){
       text: data.mensaje,
   
     });
-   setTimeout(() => {window.location.reload()}, 200)
+   setTimeout(() => {window.location.reload()}, "1200")
 }
 
     });
@@ -92,14 +94,14 @@ if(data.status == "error"){
 }
 
 if(data.status == "ok"){
-
   Swal.fire({
-      icon: "success",
-      title: "Correcto",
-      text: data.mensaje,
-  
-    });
-   setTimeout(() => {window.location.reload()}, 200)
+    position: "top-end",
+    icon: "success",
+    title: data.mensaje,
+    showConfirmButton: false,
+    timer: 1500
+  });
+   setTimeout(() => {window.location.reload()}, "1200")
 }
 
     });
@@ -196,8 +198,9 @@ document.getElementById("existencia").value = existencia;
                 res[i][keys[j]]
               }" class="img-thumbnail">`;
             }
-
             fila.innerHTML += `<td scope="col">${contenido}  </td>`;
+          
+           
             fila.setAttribute("data-bs-toggle", "modal");
             fila.setAttribute("data-bs-target", "#exampleModal");
             fila.setAttribute("data-bs-whatever", "@mdo");
@@ -205,6 +208,7 @@ document.getElementById("existencia").value = existencia;
               "onclick",
               `leer(${res[i]["Iditem"]},"${res[i]["descripcion"]}","${res[i]["existencia"]}")`
             );
+          
            
 
             elementostabla.appendChild(fila);
@@ -222,6 +226,57 @@ document.getElementById("existencia").value = existencia;
     thead.append(cabezeratabla);
     tbody.append(elementostabla);
   }
+
+
+  let btneliminar = document.getElementById("btneliminar")
+
+  btneliminar.addEventListener ("click",eliminar);
+  
+  function eliminar(){
+  
+
+    var json = `{"id" :${document.getElementById("id").value} }`
+  
+
+    
+   fetch("http://localhost:2000/medicine/delete", {
+       
+    headers: {"Content-Type": "application/json"},
+     method: "POST",
+        mode: "cors",
+        body: json,
+      }
+      ).then(function(response) {
+  
+        return response.json();
+      }).then(function(data) {
+  
+setTimeout(() => {
+  if(data.status == "error"){
+  
+    Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: data.mensaje,
+    
+      });
+  }
+  
+  if(data.status == "ok"){
+  
+    Swal.fire({
+        icon: "success",
+        title: "Correcto",
+        text: data.mensaje,
+    
+      });
+  
+  }
+     
+}, "1000");
+
+ })
+    }
 
 
   autotabla(API);

@@ -33,11 +33,12 @@ document.getElementById("loginForm")?.addEventListener("submit", (event) => {
 
 
           Swal.fire({
-              icon: "success",
-              title: "Correcto",
-              text: data.mensaje,
-          
-            });
+            position: "top-end",
+            icon: "success",
+            title: data.mensaje,
+            showConfirmButton: false,
+            timer: 1500
+          });
 
             localStorage.setItem('EMAIL',data.email);
             localStorage.setItem('ID',data.id);

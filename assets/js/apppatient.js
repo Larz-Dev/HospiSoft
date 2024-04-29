@@ -45,7 +45,7 @@ if(data.status == "ok"){
       text: data.mensaje,
   
     });
-   setTimeout(() => {window.location.reload()}, 200)
+   setTimeout(() => {window.location.reload()}, "1200")
 }
 
     });
@@ -94,12 +94,13 @@ if(data.status == "error"){
 if(data.status == "ok"){
 
   Swal.fire({
-      icon: "success",
-      title: "Correcto",
-      text: data.mensaje,
-  
-    });
-   setTimeout(() => {window.location.reload()}, 200)
+    position: "top-end",
+    icon: "success",
+    title: data.mensaje,
+    showConfirmButton: false,
+    timer: 1500
+  });
+   setTimeout(() => {window.location.reload()}, "1200")
 }
 
     });

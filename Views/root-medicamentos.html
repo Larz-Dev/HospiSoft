@@ -26,7 +26,7 @@ if((localStorage.getItem('EMAIL')== "" || localStorage.getItem('ID') =="")  || (
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Forms / Validation - NiceAdmin Bootstrap Template</title>
+  <title>HospiSoft - medicamentos</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -73,12 +73,7 @@ if((localStorage.getItem('EMAIL')== "" || localStorage.getItem('ID') =="")  || (
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
+
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
@@ -370,9 +365,14 @@ if((localStorage.getItem('EMAIL')== "" || localStorage.getItem('ID') =="")  || (
                 <input id="id"  name="id" type="hidden" class="form-control" id="validationDefault02" value="" required>
 
               </div>
+             
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
               <button type="submit" id="btneditar" class="btn btn-primary">Editar</button>
+             
+              
+
          </form>
+         <button  id="btneliminar" class="btn btn-danger">Eliminar</button>
           </div>
           <div class="modal-footer">
    

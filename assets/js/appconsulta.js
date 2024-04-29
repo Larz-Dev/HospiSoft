@@ -95,13 +95,15 @@ document.getElementById("feditar")?.addEventListener("submit", (event) => {
 
       if (data.status == "ok") {
         Swal.fire({
+          position: "top-end",
           icon: "success",
-          title: "Correcto",
-          text: data.mensaje,
+          title: data.mensaje,
+          showConfirmButton: false,
+          timer: 1500
         });
         setTimeout(() => {
           window.location.reload();
-        }, 200);
+        }, "1200");
       }
     });
 });
