@@ -124,7 +124,7 @@ req.body.id;
     });
   } else {
    
-  let sql = "SELECT * from hospisoft_medico";
+  let sql = "SELECT * from hospisoft_medico where emailMedico = '" + emaill + "'" ;
   let [filas] = await cnx.query(sql);
         let password;
         let email;
@@ -165,7 +165,9 @@ req.body.id;
               email: email,
               id: id,
               role: role,
-            });
+            }
+         );
+         console.log(role)
           }
         }
       }

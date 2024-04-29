@@ -129,13 +129,7 @@ btnConsultar.addEventListener("click", () => {
       });
     thead.append(cabezeratabla);
     tbody.append(elementostabla);
-    setTimeout(() => {
-      $('#tabla').DataTable( {
-         autoWidth: false,
-     responsive: true
-      
-    } );
-    }, "300");
+ 
       
   
   

@@ -229,8 +229,6 @@ if(keys[j] == "passwordMedico"){
     tbody.append(elementostabla);
   }
 
-setTimeout(() => {
-  document.getElementsByClassName("datatable-empty")[1].remove();
-}, "300");
+
   autotabla(API);
 

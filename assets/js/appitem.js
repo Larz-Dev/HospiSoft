@@ -223,8 +223,6 @@ document.getElementById("existencia").value = existencia;
     tbody.append(elementostabla);
   }
 
-setTimeout(() => {
-  document.getElementsByClassName("datatable-empty")[1].remove();
-}, "300");
+
   autotabla(API);
 

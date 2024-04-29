@@ -201,7 +201,5 @@ function autotabla(API) {
   tbody.append(elementostabla);
 }
 
-setTimeout(() => {
-  document.getElementsByClassName("datatable-empty")[1].remove();
-}, "100");
+
 autotabla(API);

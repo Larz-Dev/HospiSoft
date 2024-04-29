@@ -33,7 +33,7 @@ if((localStorage.getItem('EMAIL')== "" || localStorage.getItem('ID') =="")  || (
   <!-- Favicons -->
   <link href="/assets/img/favicon.png" rel="icon">
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-<link rel="stylesheet" href="//assets/css/responsivedatatable.css">
+
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -418,7 +418,7 @@ if((localStorage.getItem('EMAIL')== "" || localStorage.getItem('ID') =="")  || (
             <div class="card-body">
         <br>
               <!-- Table with stripped rows -->
-              <table   id="tabla" class="table" width="100%" cellspacing="0">
+              <table   id="tabla" class="datatable table table-striped" width="100%" cellspacing="0">
                 <thead id="appendcabezera"></thead>
               </table>
 
@@ -476,17 +476,20 @@ if((localStorage.getItem('EMAIL')== "" || localStorage.getItem('ID') =="")  || (
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
   <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.js"></script>
   <script src="/assets/js/responsibledatatable.js"></script>
-  
-  <script>
-  setTimeout(() => {
-    $('#tabla').DataTable( {
-       autoWidth: false,
-   responsive: true
-    
-  } );
-  }, "300");
-    
-  </script>
+
+
+<script src="/assets/js/datatables.js"></script>
+<script src="/assets/js/datatablebuttons.js"></script>
+<script src="/assets/js/dtbuttons.js"></script>
+<script src="/assets/js/dthtml5.js"></script>
+<script src="/assets/js/pdfmake.js"></script>
+<script src="/assets/js/pdffonts.js"></script>
+<script src="/assets/js/dtprint.js"></script>
+<script src="/assets/js/responsive.js"></script>
+<script src="/assets/js/responsibledt.js"></script>
+
+<script src="/assets/js/cargartabla.js"></script>
+
   <!-- Template Main JS File -->
  
 </body>

@@ -512,7 +512,7 @@
             <div class="card-body">
         <br>
               <!-- Table with stripped rows -->
-              <table   id="tabla" class="table" width="100%" cellspacing="0">
+              <table   id="tabla" class="datatable table table-striped" width="100%" cellspacing="0">
                 <thead id="appendcabezera"></thead>
               </table>
 
@@ -569,16 +569,19 @@
 <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.js"></script>
 <script src="/assets/js/responsibledatatable.js"></script>
 
-<script>
-setTimeout(() => {
-  $('#tabla').DataTable( {
-     autoWidth: false,
- responsive: true
-  
-} );
-}, "300");
-  
-</script>
+<script src="/assets/js/datatables.js"></script>
+<script src="/assets/js/datatablebuttons.js"></script>
+<script src="/assets/js/dtbuttons.js"></script>
+<script src="/assets/js/dthtml5.js"></script>
+<script src="/assets/js/pdfmake.js"></script>
+<script src="/assets/js/pdffonts.js"></script>
+<script src="/assets/js/dtprint.js"></script>
+<script src="/assets/js/responsive.js"></script>
+<script src="/assets/js/responsibledt.js"></script>
+
+<script src="/assets/js/cargartabla.js"></script>
+
+
   <script src="/assets/js/sesion.js"></script>
   <script src="/assets/js/main.js"></script>
 

@@ -1,6 +1,6 @@
 document.getElementById("loginForm")?.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent the form from submitting normally
-  
+  CerrarSesion();
     // Get the form data
     const formData = new FormData(event.target);
   
@@ -44,8 +44,8 @@ document.getElementById("loginForm")?.addEventListener("submit", (event) => {
             localStorage.setItem('USER',data.user);
             localStorage.setItem('ROLE',data.role);
             setTimeout(() => {
-          
-
+          console.log(data.role);
+console.log(    localStorage.getItem('ROLE'))
 
            
             if(localStorage.getItem('ROLE')=="ROOT"){
@@ -77,5 +77,5 @@ if(data.status == "error"){
     localStorage.setItem('EMAIL',"");
     localStorage.setItem('ID',"");
     localStorage.setItem('USER',"");
-    
+    localStorage.setItem('ROLE',"");
   }
