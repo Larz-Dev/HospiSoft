@@ -53,6 +53,10 @@ console.log(    localStorage.getItem('ROLE'))
               window.location.replace("index-root.html")
 
             }
+            if(localStorage.getItem('ROLE')=="Dispensario"){
+              window.location.replace("medicamentos.html")
+
+            }
           }, "1500");
         }
 
